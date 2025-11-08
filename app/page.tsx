@@ -33,6 +33,9 @@ export default function Page() {
   const [cards, setCards] = useState<Card[]>([]);
   const [queue, setQueue] = useState<Card[]>([]);
   const [index, setIndex] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [resultText, setResultText] = useState("");
+  const [explanationText, setExplanationText] = useState("");
   const [feedback, setFeedback] = useState("");
 
 
@@ -116,54 +119,102 @@ export default function Page() {
         onAnswer={handleAnswer}
       />
 
-    <div style={{ marginTop: 20 }}>
-      <input
-        type="text"
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-        placeholder="Escribe tu respuesta aquí..."
-        style={{
-          padding: "10px",
-        width: "100%",
-        border: "1px solid #555",
-        background: "#222",
-        color: "#fff",
-        borderRadius: 8,
-        marginBottom: 10
-      }}
-    />
+      <div style={{ marginTop: 20 }}>
+        {loading && (
+          <p style={{ color: "#ccc", marginBottom: 10 }}>
+            Analizando respuesta... 🤖  Espere un momento
+          </p>
+        )}
 
-    <button
-      onClick={() => {
-        const correct = answer.trim().toLowerCase() === current.back.toLowerCase();
+        <input
+          type="text"
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          placeholder="Escribe tu respuesta aquí..."
+          style={{
+            padding: "10px",
+            width: "100%",
+            border: "1px solid #555",
+            background: "#222",
+            color: "#fff",
+            borderRadius: 8,
+            marginBottom: 10
+          }}
+        />
 
-        setFeedback(
-          correct
-            ? "✅ Correcto"
-            : `❌ Incorrecto — La respuesta correcta es: ${current.back}`
-        );
+        <button
+          onClick={async () => {
+            setLoading(true);
+            
+            const res = await fetch("/api/ai-check", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                answer: answer,
+                correctAnswer: current.back
+              })
+            });
 
-        handleAnswer(correct);
-        setAnswer("");
-      }}
-      style={{
-        padding: "8px 12px",
-        borderRadius: 8,
-        border: "1px solid #666",
-        background: "#333",
-        color: "white"
-      }}
-    >
-      Enviar respuesta
-    </button>
+            const data = await res.json();
 
-    {feedback && (
-      <p style={{ marginTop: 10, color: feedback.includes("✅") ? "lightgreen" : "red" }}>
-        {feedback}
-      </p>
-    )}
+            if (data.correct) {
+              setResultText("✅ Correcto");
+            } else {
+              setResultText("❌ Incorrecto");
+            }
+            
+            setExplanationText(data.explanation);            
 
-    </div>
+            setAnswer("");
+
+            setLoading(false);
+          }}
+          style={{
+            padding: "8px 12px",
+            borderRadius: 8,
+            border: "1px solid #666",
+            background: "#333",
+            color: "white"
+          }}
+        >
+          Enviar respuesta
+        </button>
+
+        {resultText && (
+          <p style={{ marginTop: 10, fontWeight: "bold", color: resultText.includes("✅") ? "lightgreen" : "red" }}>
+            {resultText}
+          </p>
+        )}
+
+        {explanationText && (
+          <p style={{ marginTop: 4, opacity: 0.8, fontStyle: "italic", color: "#ccc" }}>
+            {explanationText}
+          </p>
+        )}
+
+        {resultText && (
+          <button
+            onClick={() => {
+              handleAnswer(resultText.includes("✅"));
+              setResultText("");
+              setExplanationText("");
+            }}
+            style={{
+              marginTop: 16,
+              padding: "10px 14px",
+              borderRadius: 8,
+              border: "1px solid #888",
+              background: "#222",
+              color: "white",
+              cursor: "pointer",
+              fontWeight: "bold"
+            }}
+          >
+            Siguiente →
+          </button>
+        )}
+
+      </div>
 
     </main>
   );
