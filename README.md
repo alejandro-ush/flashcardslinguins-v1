@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌍 Flashcards Linguins – MVP IA  
+**Aprendizaje inteligente de idiomas con IA + Repetición Espaciada (SRS)**  
 
-## Getting Started
+![Preview](docs/preview.png)  
+> *"Tu nuevo compañero para aprender idiomas de forma natural, personalizada y divertida."*  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
-```
+## 🚀 Descripción general  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Flashcards Linguins** es un proyecto **MVP (Producto Mínimo Viable)** desarrollado con **Next.js**, **Supabase** y **OpenAI**, que combina aprendizaje adaptativo, IA y diseño minimalista para crear una experiencia de estudio moderna y dinámica.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+El objetivo es ofrecer una plataforma que **entienda cómo aprende cada persona** y ajuste automáticamente las tarjetas y correcciones según su progreso, errores y nivel (A1, A2, B1...).  
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## 🧠 Principales características  
 
-To learn more about Next.js, take a look at the following resources:
+✅ **Sistema Leitner (SRS):**  
+Repetición espaciada que prioriza las tarjetas según tu desempeño.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+✅ **Corrección con IA (GPT):**  
+La IA analiza tus respuestas, entiende sinónimos y errores semánticos y te explica *por qué* está bien o mal.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+✅ **Categorías dinámicas:**  
+Elige entre vocabulario de *comida 🍎, casa 🏠, verbos ⚡️, ropa 👕,* y más.  
 
-## Deploy on Vercel
+✅ **Interfaz reactiva y accesible:**  
+Diseño limpio, intuitivo y sin distracciones.  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ **Modo “Ayuda”:**  
+Muestra la respuesta correcta si la necesitás (limitado en futuras versiones como parte de la gamificación).  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+✅ **Feedback claro y natural:**  
+Mensajes positivos, explicación de errores y botón de “Siguiente” para mantener el ritmo humano.  
+
+---
+
+## ⚙️ Stack tecnológico  
+
+| Tecnología | Uso |
+|-------------|-----|
+| **Next.js (App Router)** | Frontend + Serverless API Routes |
+| **Supabase** | Base de datos y autenticación |
+| **OpenAI API (GPT-5)** | Corrección semántica y generación de feedback |
+| **Vercel** | Hosting y CI/CD automático |
+| **TypeScript + React Hooks** | Lógica reactiva y tipado seguro |
+
+---
+
+## 🧩 Arquitectura general  
