@@ -28,10 +28,13 @@ const seed: Card[] = [
 ];
 
 export default function Page() {
+  const [answer, setAnswer] = useState("");
   const [category, setCategory] = useState(DEFAULT_CATEGORY);
   const [cards, setCards] = useState<Card[]>([]);
   const [queue, setQueue] = useState<Card[]>([]);
   const [index, setIndex] = useState(0);
+  const [feedback, setFeedback] = useState("");
+
 
   useEffect(() => {
     async function load() {
@@ -112,6 +115,56 @@ export default function Page() {
         back={current.back}
         onAnswer={handleAnswer}
       />
+
+    <div style={{ marginTop: 20 }}>
+      <input
+        type="text"
+        value={answer}
+        onChange={(e) => setAnswer(e.target.value)}
+        placeholder="Escribe tu respuesta aquí..."
+        style={{
+          padding: "10px",
+        width: "100%",
+        border: "1px solid #555",
+        background: "#222",
+        color: "#fff",
+        borderRadius: 8,
+        marginBottom: 10
+      }}
+    />
+
+    <button
+      onClick={() => {
+        const correct = answer.trim().toLowerCase() === current.back.toLowerCase();
+
+        setFeedback(
+          correct
+            ? "✅ Correcto"
+            : `❌ Incorrecto — La respuesta correcta es: ${current.back}`
+        );
+
+        handleAnswer(correct);
+        setAnswer("");
+      }}
+      style={{
+        padding: "8px 12px",
+        borderRadius: 8,
+        border: "1px solid #666",
+        background: "#333",
+        color: "white"
+      }}
+    >
+      Enviar respuesta
+    </button>
+
+    {feedback && (
+      <p style={{ marginTop: 10, color: feedback.includes("✅") ? "lightgreen" : "red" }}>
+        {feedback}
+      </p>
+    )}
+
+    </div>
+
     </main>
   );
 }
