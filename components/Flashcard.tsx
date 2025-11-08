@@ -18,7 +18,7 @@ export default function Flashcard({ front, back, onAnswer }: Props) {
 
       <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
         <button onClick={() => setShow(!show)}>
-          {show ? "Ocultar" : "Mostrar"}
+          {show ? "Ocultar" : "Ayuda"}
         </button>
         {show && (
           <>
