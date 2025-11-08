@@ -52,9 +52,54 @@ Mensajes positivos, explicación de errores y botón de “Siguiente” para man
 /app
 ├── api/ai-check/route.ts # Endpoint IA server-side
 ├── page.tsx # Lógica principal y flujo de tarjetas
+
 /components
 └── Flashcard.tsx # Componente visual de la tarjeta
+
 /lib
 └── supabaseClient.ts # Conexión segura con Supabase
+
 /utils
 └── leitner.ts # Algoritmo Leitner (SRS)
+
+
+---
+
+## 🧪 Próximos pasos (Roadmap V4 → V6)  
+
+- 🎮 **Gamificación:** puntos, límites de ayuda y recompensas.  
+- 📊 **Seguimiento inteligente:** estadísticas de progreso y memoria.  
+- 🧬 **IA adaptativa:** personalización por nivel y errores frecuentes.  
+- 🌐 **Versión multi-idioma:** español, inglés y alemán.  
+- 🤝 **Módulo colaborativo:** mazos compartidos y aprendizaje social.  
+
+---
+
+## 💡 Contexto y propósito  
+
+Este MVP fue desarrollado como **experimento de producto real** para validar una idea:  
+> ¿Qué pasa si un sistema de aprendizaje entiende cómo aprendés y se adapta a vos?  
+
+El objetivo no es solo enseñar vocabulario, sino construir **una experiencia más humana** de aprendizaje, aprovechando IA para acompañar, corregir y motivar.  
+
+---
+
+## 🧑‍💻 Autor  
+**Alejandro Jaramillo**  
+Desarrollador & Creador de Productos Digitales  
+📍 Berlín, Alemania  
+
+💼 [LinkedIn](https://www.linkedin.com/in/)  
+🐙 [GitHub](https://github.com/alejandro-ush)  
+✉️ [Contacto](mailto:tuemail@ejemplo.com)  
+
+---
+
+## 📸 Capturas sugeridas (añadir luego)
+- `docs/preview.png` → Pantalla principal  
+- `docs/ai-feedback.png` → Ejemplo de corrección IA  
+- `docs/categories.png` → Selector de categorías  
+
+---
+
+> _"Aprender un idioma no debería sentirse como estudiar, sino como descubrir."_ 🌱
