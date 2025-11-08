@@ -49,3 +49,12 @@ Mensajes positivos, explicación de errores y botón de “Siguiente” para man
 ---
 
 ## 🧩 Arquitectura general  
+/app
+├── api/ai-check/route.ts # Endpoint IA server-side
+├── page.tsx # Lógica principal y flujo de tarjetas
+/components
+└── Flashcard.tsx # Componente visual de la tarjeta
+/lib
+└── supabaseClient.ts # Conexión segura con Supabase
+/utils
+└── leitner.ts # Algoritmo Leitner (SRS)
